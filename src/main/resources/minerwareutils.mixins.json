@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dospacite.minerwareutils.mixin",
+  "refmap": "minerwareutils.refmap.json",
+  "mixins": [
+
+  ],
+  "client": [
+
+  ],
+  "compatibilityLevel": "JAVA_8",
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
