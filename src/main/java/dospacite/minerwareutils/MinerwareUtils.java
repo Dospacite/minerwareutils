@@ -36,7 +36,7 @@ public class MinerwareUtils {
 
     @SubscribeEvent
     public void onMinigameChange(MinerwareTitleEvent event) {
-        LOGGER.debug("Title: " + event.displayedTitle + "\nSubtitle: " + event.displayedSubtitle);
+        //LOGGER.debug("Title: " + event.displayedTitle + "\nSubtitle: " + event.displayedSubtitle);
     }
 
 }
