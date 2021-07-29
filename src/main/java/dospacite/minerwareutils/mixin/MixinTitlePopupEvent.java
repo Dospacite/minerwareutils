@@ -1,28 +1,23 @@
 package dospacite.minerwareutils.mixin;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
 import dospacite.minerwareutils.MinerwareUtils;
+import dospacite.minerwareutils.events.MinerwareTitleEvent;
 import net.minecraft.client.gui.IngameGui;
-import net.minecraft.profiler.IProfiler;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.common.MinecraftForge;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/*
-List of methods that I have tried that did not work:
-- IngameUI;renderIngameUI | at = Head -> No Output
-- IngameUI;renderTitles | at = Head -> No Output
-- IProfiler;startSection | at = Head -> No Output
- */
+
 @Mixin(IngameGui.class)
 public class MixinTitlePopupEvent {
     @Inject(at=@At("HEAD"),
-            method = "Lnet/minecraft/client/gui/IngameGui;renderIngameGui(Lcom/mojang/blaze3d/matrix/MatrixStack;F)V",
+            method = "renderTitles(Lnet/minecraft/util/text/ITextComponent;Lnet/minecraft/util/text/ITextComponent;III)V",
             cancellable = true)
-    public void onStartSection(MatrixStack matrixStack, float partialTicks, CallbackInfo ci) {
+    public void onStartSection(ITextComponent title, ITextComponent subtitle, int p_238452_3_, int p_238452_4_, int p_238452_5_, CallbackInfo ci) {
         MinerwareUtils.LOGGER.debug("Reached.");
+        MinecraftForge.EVENT_BUS.post(new MinerwareTitleEvent(title, subtitle));
     }
-
 }

@@ -4,7 +4,6 @@
   "package": "dospacite.minerwareutils.mixin",
   "refmap": "minerwareutils.refmap.json",
   "mixins": [
-    "MixinTest",
     "MixinTitlePopupEvent"
   ],
   "client": [
