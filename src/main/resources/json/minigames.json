@@ -1,0 +1,7 @@
+{
+  "minigames": [
+    {
+      "Milk The Cow": "MinigameMilkCow.java"
+    }
+  ]
+}

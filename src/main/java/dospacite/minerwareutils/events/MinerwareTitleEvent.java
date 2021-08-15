@@ -1,6 +1,8 @@
 package dospacite.minerwareutils.events;
 
+import dospacite.minerwareutils.MinerwareUtils;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.Event;
 
 /** MinerwareTitleEvent is fired when client gets a title popup while in Minerware.
@@ -16,5 +18,4 @@ public class MinerwareTitleEvent extends Event {
         this.displayedTitle = displayedTitle;
         this.displayedSubtitle = displayedSubtitle;
     }
-
 }
