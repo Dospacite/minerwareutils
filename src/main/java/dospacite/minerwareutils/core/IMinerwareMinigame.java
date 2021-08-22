@@ -1,6 +1,8 @@
 package dospacite.minerwareutils.core;
 
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.Event;
 
 public interface IMinerwareMinigame {
 
@@ -12,19 +14,18 @@ public interface IMinerwareMinigame {
     /**
      * Is run on every player tick.
      */
-    void tick();
+    void tick(TickEvent.PlayerTickEvent event);
 
     /**
-     * Processes the title.
-     * @param title, the title.
-     * @param subtitle, the subtitle.
-     * @return If the title was used fully utilized by the handler or not.
+     * Processes the latest event.
+     * @param event, the event to process.
+     * @return if the event was fully utilized by the handler or not.
      */
-    boolean processTitle(ITextComponent title, ITextComponent subtitle);
+    boolean processEvent(Event event);
+
 
     /**
      * Ran when the minigame is reset to clean up.
      */
     void cleanUp();
-
 }

@@ -9,7 +9,7 @@ import java.util.Map;
 public class MinerwareMinigames {
 
     /**
-     * The hashmap that holds all the minigame classes, with their appropriate regexes as keys.
+     * The hashmap that holds all the minigame classes, with their appropriate titles as keys.
      */
     private static HashMap<String, Class<? extends IMinerwareMinigame>> Minigames = new HashMap<String, Class<? extends IMinerwareMinigame>>() {{
         put("Wait for it...", MinigameWaitForIt.class);
@@ -26,7 +26,7 @@ public class MinerwareMinigames {
     public static IMinerwareMinigame getMinigame(ITextComponent title) throws InstantiationException, IllegalAccessException {
         IMinerwareMinigame minigame = null;
         for (Map.Entry<String, Class<? extends IMinerwareMinigame>> entry: Minigames.entrySet()) {
-            if(title.getString().matches(entry.getKey())) {
+            if(title.getString().contains(entry.getKey())) {
                 minigame = Minigames.get(entry.getKey()).newInstance();
             }
         }

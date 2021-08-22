@@ -27,7 +27,7 @@ public class MinerwareTitleEventHandler {
         }
         else {
             // If the minigame had no use of the title, check if it SUCCESS or FAILED, and reset the minigame if it is.
-            if(!currentMinigame.processTitle(event.displayedTitle, event.displayedSubtitle)) {
+            if(!currentMinigame.processEvent(event)) {
                 if(event.displayedTitle.getString().contains("SUCCESS") || event.displayedTitle.getString().contains("FAILED")) {
                     currentMinigame.cleanUp();
                     currentMinigame = null;
@@ -43,7 +43,7 @@ public class MinerwareTitleEventHandler {
             currentMinigame.init();
         }
         catch (Exception exception) {
-            //Log exception.
+            // Log exception.
             MinerwareUtils.LOGGER.error("An OH FUCK has occurred: ", exception);
         }
     }
@@ -52,7 +52,7 @@ public class MinerwareTitleEventHandler {
     public void handlePlayerTickEvent(TickEvent.PlayerTickEvent event) {
         //If minigame is set, tick.
         if(currentMinigame != null) {
-            currentMinigame.tick();
+            currentMinigame.tick(event);
         }
     }
 }
